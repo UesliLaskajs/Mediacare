@@ -1,0 +1,33 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@layer base {
+  section {
+    @apply max-w-full w-[1440px] px-5  mx-auto;
+  }
+}
+@layer components {
+  .container {
+    @apply max-w-full w-[1440px] px-5  mx-auto;
+  }
+
+  .btn {
+    @apply bg-primaryColor text-white font-[600] py-[15px] px-[35px] rounded-[50px] mt-[38px];
+  }
+
+  .heading {
+    @apply text-[44px] leading-[54px] font-[600] text-heroColor;
+  }
+
+  .text_para {
+    @apply text-[16px] text-textColor leading-[30px] font-[400] mt-[18px];
+  }
+
+  .header {
+    @apply bg-[url("./assets/images/mask.png")] bg-center bg-cover w-full bg-no-repeat h-[100px] leading-[100px];
+  }
+  .hero_section{
+    @apply bg-[url("./assets/images/background.jpg")] bg-center bg-cover bg-no-repeat max-w-full;
+  }
+}
