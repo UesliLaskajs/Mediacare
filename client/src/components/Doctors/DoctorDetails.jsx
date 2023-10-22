@@ -1,11 +1,11 @@
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 const DoctorDetails = (prop) => {
     const { doctor } = prop;
 
     return (
         <div className="w-[30%] flex flex-col justify-center items-center">
             <div className="doctors_image">
-                <img src={doctor.photo} alt={name} /> {/* Use the destructured 'photo' variable directly */}
+                <img src={doctor.photo} alt={name} /> 
             </div>
             <div className="flex w-[100%] justify-start">
                 <h1 className="text-[1.5rem]">{doctor.name}</h1>
@@ -26,11 +26,11 @@ const DoctorDetails = (prop) => {
 
 
             <p className="text_para">Hospital: {doctor.hospital}</p>
-            <Link to={'doctor'}>
+            {/* <Link to={'/doctors'}>
             <div className="btn">
                 Visit
             </div>
-            </Link>
+            </Link> */}
             
         </div>
     );

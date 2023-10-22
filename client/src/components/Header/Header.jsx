@@ -48,7 +48,7 @@ const Header = () => {
 
                 <div className="flex items-center gap-4">
                   <div>
-                    <Link to="/">
+                    <Link to="/profile">
                       <figure className="w-[35px] h-[35px] rounded-full">
                         <img src={userImg} className="w-full rounded-full" />
                       </figure>

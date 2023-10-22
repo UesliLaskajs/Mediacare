@@ -21,7 +21,7 @@ const About = () => {
                             Their dedication to the medical field contributes significantly to the overall healthcare system, fostering trust and confidence in the community.
                         </div>
                         <div className="flex w-[100%] justify-start ">
-                            <Link to={"/"}>
+                            <Link to={"/contact"}>
                                 <div className="btn">
                                     Learn more
                                 </div>

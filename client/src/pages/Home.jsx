@@ -9,6 +9,7 @@ import About from "../components/About/About"
 import ListofServices from "../components/Services/ListofServices"
 import doktorPipero from "../assets/images/pipero.png"
 import DoctorList from "../components/Doctors/DoctorList"
+import DoctorForm from "../components/Doctors/DoctorForm"
 // import Footer from "../components/Footer/Footer"
 // import Testimonial from "../components/Testimonial/Testimonial"
 const Home = () => {
@@ -30,7 +31,10 @@ const Home = () => {
                   <p className="text_para">Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Praesentium minima qui aliquam ratione, repellat dignissimos amet excepturi.
                     Distinctio ex, quibusdam nihil accusantium cumque impedit cum laudantium dolor! Fugit, commodi dolorum.</p>
-                  <button className="btn">Schedule an appoinment</button>
+                  <Link to={"/doctors"}>
+                    <button className="btn">Schedule an appoinment</button>
+                  </Link>
+
                 </div>
 
                 <div className="flex justify-between w-[100%] items-center  ">
@@ -155,6 +159,7 @@ const Home = () => {
       </section>
 
       <ListofServices />
+      <DoctorForm />
 
       <section className="pt-[60px]">
         <div className="container">
@@ -169,7 +174,7 @@ const Home = () => {
                 3.View our doctors and the most important <br /> <strong>View their reviews</strong>
               </p>
 
-              <Link to={'/'}>
+              <Link to={'/contact'}>
                 <div className="btn w-[170px]">Learn more</div>
               </Link>
 
@@ -186,7 +191,7 @@ const Home = () => {
       <section className="pt-[60px]">
         <div className="container flex flex-col justify-center items-center    ">
           <div className="flex flex-col justify-center items-center w-[350px]">
-            <h1 className="font-bold text-4xl">Our Doctors</h1>
+            <h1 className="font-bold text-4xl">Our Best Doctors</h1>
             <p className="text_para text-center">
               We provide a wide range of services that are designed to meet the needs and expectations.
             </p>
