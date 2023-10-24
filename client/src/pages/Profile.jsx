@@ -1,4 +1,4 @@
-import  { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -53,18 +53,18 @@ const Profile = () => {
                                     <p className="text_para">Hospital: {item.hospital}</p>
                                     <p className="text_para">Education: {item.schooling}</p>
                                     <form onSubmit={(e) => eventHandler(e, item._id)}>
-                                        <div className="mb-4">
-                                            <label htmlFor="book" className="mr-[20px]">Book</label>
+                                        <div className="mb-4 flex items-center">
                                             <input
                                                 type="checkbox"
                                                 id="booked"
                                                 name="booked"
-                                                className="mt-1 rounded border border-gray-300 focus:ring-indigo-500 text-indigo-600"
+                                                className="rounded border border-gray-300 focus:ring-indigo-500 text-indigo-600 mr-2"
                                                 checked={booked}
                                                 onChange={(e) => setBooked(e.target.checked)}
                                             />
+                                            <label htmlFor="booked" className="text-gray-700">Book</label>
                                         </div>
-                                        <button className="btn">Book</button>
+                                        <button className="btn">Update Book</button>
                                     </form>
                                 </div>
                             </div>

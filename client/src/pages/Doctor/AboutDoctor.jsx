@@ -1,77 +1,72 @@
-import { useState, useEffect } from "react"
-import axios from "axios"
-import { useParams } from "react-router-dom"
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { useParams } from "react-router-dom";
 
 const AboutDoctor = () => {
-  const [doctor, setDoctor] = useState('')
+  const [doctor, setDoctor] = useState("");
   const { id } = useParams();
-  const [feedback, setFeedback] = useState([])
+  const [feedback, setFeedback] = useState("");
 
   useEffect(() => {
     axios.get(`http://localhost:3000/doctors/${id}`)
       .then((res) => {
-        console.log(res.data)
-        setDoctor(res.data)
+        console.log(res.data);
+        setDoctor(res.data);
       })
       .catch((err) => {
-        console.log("Error getting specific Doctor Data", err)
-      })
-  }, [id])
+        console.log("Error getting specific Doctor Data", err);
+      });
+  }, [id]);
 
   const eventHandler = (e) => {
     e.preventDefault();
     axios.patch(`http://localhost:3000/doctor/edit/${id}`, {
-      feedback
+      feedback,
     })
       .then(() => {
-        console.log("Succesfully Sent")
+        console.log("Successfully Sent");
       })
       .catch((err) => {
-        console.log("Couldnt Post", err)
-      })
-      setFeedback("")
-  }
+        console.log("Couldn't Post", err);
+      });
+    setFeedback("");
+  };
+
   return (
     <>
-      <section className="pt-[60px]">
-        <div className="container">
-          <div className="flex flex-col">
-            <div className="fullname heading ">
-              {doctor.fullname}
-            </div>
-            <div className="speciality">
-              Speciality:{doctor.speciality}
-            </div>
-            <div className="patients">
-              Total Patients:{doctor.patients}
-            </div>
-            <div className="hospital">
-              Hospital:{doctor.hospital}
-            </div>
-            <div className="schooling">
-              Schooling:{doctor.schooling}
-            </div>
-            <div className="booking">
-              Booked: {doctor.booked  === false ? "false" : "true"}
-            </div>
+      <section className="pt-12 pb-8 bg-gray-100 min-h-screen">
+        <div className="container mx-auto">
+          <div className="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-lg">
+            <h2 className="text-2xl font-semibold mb-4">{doctor.fullname}</h2>
+            <p className="text-gray-600 mb-2">Speciality: {doctor.speciality}</p>
+            <p className="text-gray-600 mb-2">Total Patients: {doctor.patients}</p>
+            <p className="text-gray-600 mb-2">Hospital: {doctor.hospital}</p>
+            <p className="text-gray-600 mb-2">Schooling: {doctor.schooling}</p>
+            <p className="text-gray-600 mb-2">
+              Booked: {doctor.booked ? "true" : "false"}
+            </p>
 
-            <form onSubmit={eventHandler}>
-              <label htmlFor="feedback" className="block text-sm font-medium text-gray-600">Feedback:</label>
-              <textarea id="feedback" name="feedback"
+            <form onSubmit={eventHandler} className="mt-4">
+              <label htmlFor="feedback" className="block text-sm font-medium text-gray-600 mb-1">
+                Feedback:
+              </label>
+              <textarea
+                id="feedback"
+                name="feedback"
                 placeholder="Enter feedback"
                 className="mt-1 p-2 rounded border w-full focus:outline-none focus:border-blue-500"
                 value={feedback}
-                onChange={(e) => setFeedback(e.target.value)} />
-              <button className="btn">
+                onChange={(e) => setFeedback(e.target.value)}
+              />
+              <button className="mt-2 btn bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
                 Submit
               </button>
             </form>
-
           </div>
         </div>
       </section>
     </>
-  )
-}
+  );
+};
 
 export default AboutDoctor;

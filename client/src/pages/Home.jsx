@@ -10,9 +10,48 @@ import ListofServices from "../components/Services/ListofServices"
 import doktorPipero from "../assets/images/pipero.png"
 import DoctorList from "../components/Doctors/DoctorList"
 import DoctorForm from "../components/Doctors/DoctorForm"
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useCookies } from "react-cookie";
+import axios from "axios";
 // import Footer from "../components/Footer/Footer"
 // import Testimonial from "../components/Testimonial/Testimonial"
 const Home = () => {
+  const navigate = useNavigate();
+  const [cookies, removeCookie] = useCookies([]);
+  const [username, setUsername] = useState("");
+
+  useEffect(() => {
+    const verifyCookie = async () => {
+      if (!cookies.token) {
+        navigate("/login");
+      }
+      try {
+        const { data } = await axios.post(
+          "http://localhost:3000",
+          {},
+          { withCredentials: true }
+        );
+        const { status, user } = data;
+        setUsername(user);
+        if (!status) {
+          removeCookie("token");
+          navigate("/login");
+        }
+      } catch (error) {
+        console.error("Error verifying token:", error);
+        removeCookie("token");
+        navigate("/login");
+      }
+    };
+    verifyCookie();
+  }, [cookies, navigate, removeCookie]);
+
+  const handleLogout = () => {
+    removeCookie("token");
+    navigate("/signup");
+  };
+
   return (
     <>
 
@@ -22,6 +61,12 @@ const Home = () => {
           <div className="container   ">
             <div className="flex flex-row justify-between align-center ">
               <div className="flex flex-col justify-between gap-[45px] items-center">
+                <div className="flex-col justify-center items-center w-[200px] h-[150px]">
+                  <h1 className="heading">{username}</h1>
+                  <button className="btn" onClick={handleLogout}>Logout</button>
+                </div>
+
+
 
                 <div className="w-[100%]">
                   <h1 className="text-[3.5rem] leading-[56px]  text-heroColor font-700 ">

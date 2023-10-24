@@ -9,6 +9,8 @@ import DocSpeciality from "../pages/Doctor/DocSpeciality"
 import Profile from "../pages/Profile"
 const Routers = () => {
     return (
+
+
         <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/home" element={<Home />} />
@@ -18,8 +20,9 @@ const Routers = () => {
             <Route path="/services" element={<Service />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Signup />} />
+            <Route path="/signup" element={<Signup />} />
         </Routes>
+
     )
 }
 
